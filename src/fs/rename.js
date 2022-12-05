@@ -13,8 +13,6 @@ const rename = async () => {
         } else {
             throw new Error('FS operation failed');
         }
-      
-        //throw new Error('FS operation failed');
     })
     fs.rename('./files/wrongFilename.txt', './files/properFilename.md', err => {
         if(err) throw err;
