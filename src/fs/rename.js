@@ -1,5 +1,24 @@
+let fs = require('fs');
+
 const rename = async () => {
-    // Write your code here 
+    fs.access('.files/wrongFilename.txt', fs.F_OK, (err) => {
+        if (err) {
+            throw new Error('FS operation failed');
+        }
+    })
+
+    fs.access('./files/properFilename.md', fs.F_OK, (err) => {
+        if (err) {
+            return;
+        } else {
+            throw new Error('FS operation failed');
+        }
+      
+        //throw new Error('FS operation failed');
+    })
+    fs.rename('./files/wrongFilename.txt', './files/properFilename.md', err => {
+        if(err) throw err;
+    });
 };
 
-await rename();
+rename();
